@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>REST Excerise</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h1>REST Excerise</h1>
+  <nav">
+    <ul class="navUl">
+      <li><a href="#" class="button" id="allPostsBtn">All post</a></li>
+      <li><a href="#" class="button" id="postTenBtn">Get post with ID of 10</a></li>
+      <li><a href="#" class="button" id="commentPostTwelveBtn">Get all the posts from user with id of 2</a></li>
+      <li><a href="#" class="button" id="createPostBtn">Create a new post and log the id generated for it by the server</a></li>
+      <li><a href="#" class="button" id="replacePostBtn">Replace the post with id of 12 and render the responseJSON</a></li>
+      <li><a href="#" class="button" id="updatePostBtn">Update the title of post with id of 12 and render responseJSON</a></li>
+      <li><a href="#" class="button" id="deletePostBtn">Delete the post with id of 12 and render a success message</a></li>
+      <li><a href="#" class="button" id="displayPostCommentsBtn">Display the post & related comments</a></li>
+    </ul>
+  </nav>
+ 
+  <div class="row">
+    <section id='content' class="twelve columns"></section>
+  </div>
+</div>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
