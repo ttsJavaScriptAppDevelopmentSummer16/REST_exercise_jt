@@ -106,20 +106,49 @@ $(function (){
    */
   function getComments(postId){
    $.get(URL + '/comments?postId=' + postId, function (comments) {
-      comments.forEach(function (comment){
-        console.log(comment);
-      })
+    var commentList = $('<ol id="commentList"></ol>');
+    var backToPosts = $('<button class="button-primary" id="backToPosts">Back To Posts</button>');
+    var title = '<h3>displaying comments for post id: '+ postId +  '</h3>' ;
+
+    backToPosts.on('click', displayPostComments);
+
+    comments.forEach(function (comment){
+      console.log(comment);
+      var li = $('<li></li>');
+      li.append(comment.body);
+      commentList.append(li);
     });
+    
+    commentList.prepend(title);
+    commentList.prepend(backToPosts);
+    content.html(commentList);
+  });
   }
 
 
   function displayPostComments () {
     list.html(null);
-    $.get(URL + '/posts', function (posts){
-        posts.forEach(function (post) {
-        list.append('<li>' + post.body + '<br />' + '<a id="showComments">Show Comments</a>' + '</li>');
-        $('#showComments').on('click', getComments(post.id));
+  
+
+    $.ajax({
+      url: URL + '/posts',
+      method: 'GET'
+    }).then(function (posts){
+      posts.forEach(function (post){
+        var li = $('<li></li>');
+        var showComments = $('<br> <a id="showComments">Show Comments</a>');
+        
+
+        showComments.on('click', function (){
+          getComments(post.id);
+        }); 
+
+        li.append(post.body);
+        li.append(showComments)
+        list.append(li);
+
       });
+
     });
     content.html(list);
   }
